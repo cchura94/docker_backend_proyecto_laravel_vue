@@ -53,9 +53,9 @@ services:
     build:
       context: ./nginx
       dockerfile: nginx.dockerfile
-      restart: unless-stoped
-      ports:
-        - "80:80"
+    restart: unless-stoped
+    ports:
+      - "80:80"
     networks:
       - laravelvue_network
 
