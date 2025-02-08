@@ -16,7 +16,7 @@ return new class extends Migration
             $table->date("fecha");
             $table->text("descripcion")->nullable();
             
-            $table->bigInteger("proyecto_id");
+            $table->bigInteger("proyecto_id")->unsigned();
             $table->foreign("proyecto_id")->references("id")->on("proyectos");
 
             $table->timestamps();
