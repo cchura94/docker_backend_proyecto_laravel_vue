@@ -20,7 +20,7 @@ services:
       context: ../frontend_proyecto_vue_laravel
       dockerfile: vue.dockerfile
     volumes:
-      - ../frontend_proyecto_vue_laravel/app:cached
+      - ../frontend_proyecto_vue_laravel:/app:cached
     expose:
       - "80"
     restart: always
