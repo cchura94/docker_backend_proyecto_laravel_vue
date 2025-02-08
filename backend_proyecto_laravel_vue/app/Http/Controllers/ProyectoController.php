@@ -9,6 +9,7 @@ use App\Models\Proyecto;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Maatwebsite\Excel\Facades\Excel;
+use Carbon\Carbon;
 
 
 class ProyectoController extends Controller
@@ -55,8 +56,8 @@ class ProyectoController extends Controller
         $proyecto = new Proyecto();
         $proyecto->nombre = $request->nombre;
         $proyecto->descripcion = $request->descripcion;
-        $proyecto->fecha_inicio = $request->fecha_inicio;
-        $proyecto->fecha_fin = $request->fecha_fin;
+        $proyecto->fecha_inicio = Carbon::parse($request->fecha_inicio);
+        $proyecto->fecha_fin = Carbon::parse($request->fecha_fin);
         $proyecto->jefe_proyecto = $request->jefe_proyecto;
         $proyecto->estado = $request->estado;
         // $proyecto->nombre = $request->nombre;
