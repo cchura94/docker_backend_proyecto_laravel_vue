@@ -111,7 +111,7 @@
                 <div>
                     <label for="jp" class="block font-bold mb-3">Jefe Proyecto</label>
                     
-                    <Select v-model="proyecto.jefe_proyecto_data" :options="usuarios" optionLabel="name" optionValue="id" placeholder="seleccionar Jefe Proyecto" class="w-full md:w-56" fluid />
+                    <Select v-model="proyecto.jefe_proyecto" :options="usuarios" optionLabel="name" optionValue="id" placeholder="seleccionar Jefe Proyecto" class="w-full md:w-56" fluid />
                 </div>
 
                 <!--
