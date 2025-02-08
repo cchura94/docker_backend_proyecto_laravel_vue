@@ -1,0 +1,65 @@
+version: '3'
+
+services:
+  laravel:
+    container_name: laravel
+    build:
+      context: ./
+      dockerfile: laravel.dockerfile
+    image: laravel
+    restart: unless-stopped
+    working: /var/www/html/
+    volumes:
+      - ./:/var/www/html
+    networks:
+      - laravelvue_network
+
+  vue:
+    container_name: vue
+    build:
+      context: ../frontend_proyecto_vue_laravel
+      dockerfile: vue.dockerfile
+    volumes:
+      - ../frontend_proyecto_vue_laravel/app:cached
+    expose:
+      - "80"
+    restart: always
+    ports:
+      - "3000:3000"
+    networks:
+      - laravelvue_network
+  
+  db:
+    image: mysql:8.1
+    container_name: db
+    volumes:
+      - ../mysql:/var/lib/mysql
+    restart: unless-stoped
+    port:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD: root
+      - MYSQL_DATABASE: laravelBD
+      - MYSQL_USER: root1
+      - MYSQL_PASSWORD: root1
+    networks:
+      - laravelvue_network
+
+  webserver:
+    container_name: webserver
+    depends_on:
+      - laravel
+      - vue
+    build:
+      context: ./nginx
+      dockerfile: nginx.dockerfile
+      restart: unless-stoped
+      ports:
+        - "80:80"
+    networks:
+      - laravelvue_network
+
+networks:
+  laravelvue_network:
+volumes:
+  mysql:
