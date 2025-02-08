@@ -1,5 +1,5 @@
 echo "Levantando contenedores de (DOCKER)"
-cd backend_proyecto_laravel
+cd backend_proyecto_laravel_vue
 docker-compose up -d --build
 
 docker-compose exec -T laravel composer install
