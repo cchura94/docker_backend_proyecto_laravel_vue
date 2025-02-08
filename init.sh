@@ -1,4 +1,4 @@
-echo "Levantando contenedores de (DOCKER)
+echo "Levantando contenedores de (DOCKER)"
 cd backend_proyecto_laravel
 docker-compose up -d --build
 
