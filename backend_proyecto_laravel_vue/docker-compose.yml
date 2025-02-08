@@ -35,13 +35,13 @@ services:
     volumes:
       - ../mysql:/var/lib/mysql
     restart: unless-stoped
-    port:
+    ports:
       - 3306:3306
     environment:
-      - MYSQL_ROOT_PASSWORD: root
-      - MYSQL_DATABASE: laravelBD
-      - MYSQL_USER: root1
-      - MYSQL_PASSWORD: root1
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: laravelBD
+      MYSQL_USER: root1
+      MYSQL_PASSWORD: root1
     networks:
       - laravelvue_network
 
